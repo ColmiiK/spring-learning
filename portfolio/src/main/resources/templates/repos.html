@@ -1,0 +1,29 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>GitHub Repositories</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .repo {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+      a {
+        text-decoration: none;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My GitHub Repositories</h1>
+    <div th:each="repo : ${repos}" class="repo">
+      <a th:href="${repo.htmlUrl}" th:text="${repo.name}" target="_blank"></a>
+      <p th:text="${repo.description}"></p>
+    </div>
+  </body>
+</html>

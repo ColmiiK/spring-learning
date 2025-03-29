@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My GitHub Repositories</title>
+    <!-- Link to CSS using Thymeleaf's @{} syntax -->
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container" style="padding-left: 20px; padding-right: 20px">
+        <h1>My GitHub Projects</h1>
+        <p>A collection of my open-source projects and contributions</p>
+      </div>
+    </header>
+
+    <main class="container" style="margin: 20px">
+      <div class="repo-grid" id="repo-grid">
+        <!-- Repositories will be inserted here by Thymeleaf -->
+        <div th:each="repo : ${repos}" class="repo-card">
+          <a th:href="${repo.htmlUrl}" target="_blank" class="repo-link-card">
+            <div class="repo-header">
+              <h2 class="repo-name" th:text="${repo.name}"></h2>
+              <!-- <a th:href="${repo.htmlUrl}" class="repo-link" target="_blank"> -->
+              <!--   <i class="fa-solid fa-arrow-up-right-from-square"></i> -->
+              <!-- </a> -->
+            </div>
+            <p
+              class="repo-description"
+              th:text="${repo.description ?: 'No description provided'}"
+            ></p>
+            <div class="repo-footer">
+              <div class="repo-language">
+                <span class="language-color"></span>
+                <span th:text="${repo.language}"></span>
+              </div>
+              <!-- New Information Section -->
+              <div class="repo-stats">
+                <div class="repo-pushed-at">
+                  <i class="fa-solid fa-clock"></i>
+                  <span
+                    th:text="${#dates.format(repo.pushedAt, 'yyyy-MM-dd')}"
+                  ></span>
+                </div>
+                <div class="repo-created-at">
+                  <i class="fa-solid fa-calendar"></i>
+                  <span
+                    th:text="${#dates.format(repo.createdAt, 'yyyy-MM-dd')}"
+                  ></span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container" style="padding-left: 20px; padding-right: 20px">
+        <p>
+          &copy; <span id="current-year"></span> My Portfolio. All rights
+          reserved.
+        </p>
+        <div class="social-links">
+          <a href="https://github.com" target="_blank">GitHub</a>
+          <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+          <a href="https://twitter.com" target="_blank">Twitter</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Include JavaScript using Thymeleaf's @{} syntax -->
+    <script th:src="@{/js/script.js}"></script>
+  </body>
+</html>
