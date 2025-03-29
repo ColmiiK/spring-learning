@@ -15,15 +15,13 @@ public class GithubRepository {
   private String language;
 
   @JsonProperty("pushed_at")
-  private Date pushedAt; // New field for last commit timestamp
+  private Date pushedAt;
 
   @JsonProperty("created_at")
-  private Date createdAt; // New field for creation date
+  private Date createdAt;
 
   @JsonProperty("private")
   private boolean privateRepo;
-
-  // Getters and setters for all fields
 
   public String getName() {
     return name;

@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Set current year in footer
   document.getElementById("current-year").textContent =
     new Date().getFullYear();
 
-  // Set language colors based on programming language
   const languageColors = {
     JavaScript: "#f1e05a",
     TypeScript: "#2b7489",
@@ -18,10 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
     Swift: "#ffac45",
     Kotlin: "#F18E33",
     Rust: "#dea584",
-    // Add more languages as needed
   };
 
-  // Set language color for each repository
   const languageElements = document.querySelectorAll(".language-color");
   languageElements.forEach((element) => {
     const language = element.nextElementSibling.textContent;

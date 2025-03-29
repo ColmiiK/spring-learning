@@ -12,7 +12,6 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import io.github.cdimascio.dotenv.Dotenv;
@@ -24,7 +23,6 @@ public class GithubService {
 
   Dotenv dotenv = Dotenv.load();
   private String githubToken = dotenv.get("GITHUB_TOKEN");
-  // private String githubToken = System.getenv("GITHUB_TOKEN");
 
   public GithubService(RestTemplate restTemplate) {
     this.restTemplate = restTemplate;

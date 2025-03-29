@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My GitHub Repositories</title>
-    <!-- Link to CSS using Thymeleaf's @{} syntax -->
     <link rel="stylesheet" th:href="@{/css/styles.css}" />
-    <!-- Font Awesome for icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -22,14 +20,10 @@
 
     <main class="container" style="margin: 20px">
       <div class="repo-grid" id="repo-grid">
-        <!-- Repositories will be inserted here by Thymeleaf -->
         <div th:each="repo : ${repos}" class="repo-card">
           <a th:href="${repo.htmlUrl}" target="_blank" class="repo-link-card">
             <div class="repo-header">
               <h2 class="repo-name" th:text="${repo.name}"></h2>
-              <!-- <a th:href="${repo.htmlUrl}" class="repo-link" target="_blank"> -->
-              <!--   <i class="fa-solid fa-arrow-up-right-from-square"></i> -->
-              <!-- </a> -->
             </div>
             <p
               class="repo-description"
@@ -40,7 +34,6 @@
                 <span class="language-color"></span>
                 <span th:text="${repo.language}"></span>
               </div>
-              <!-- New Information Section -->
               <div class="repo-stats">
                 <div class="repo-pushed-at">
                   <i class="fa-solid fa-clock"></i>
@@ -75,7 +68,6 @@
       </div>
     </footer>
 
-    <!-- Include JavaScript using Thymeleaf's @{} syntax -->
     <script th:src="@{/js/script.js}"></script>
   </body>
 </html>
