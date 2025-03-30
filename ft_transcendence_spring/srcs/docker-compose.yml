@@ -1,0 +1,50 @@
+services:
+  frontend:
+    build:
+      context: frontend
+    container_name: front
+    ports:
+      - "8000:80"
+      - "8443:443"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    networks:
+      - transcendence
+  backend:
+    depends_on:
+      database:
+        condition: service_healthy
+    build:
+      context: backend
+    container_name: back
+    ports:
+      - "9000:9000"
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/usr/transcendence
+    networks:
+      - transcendence
+  database:
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      retries: 5
+      timeout: 3s
+    build:
+      context: database
+    container_name: db
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
+    volumes:
+      - ./database:/usr/database
+    networks:
+      - transcendence
+volumes:
+  frontend:
+  backend:
+  database:
+networks:
+  transcendence:
